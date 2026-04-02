@@ -1,0 +1,32 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     /* 패딩을 사이즈 안 쪽으로 집어넣음 */
+ }
+
+ li {
+     list-style: none;
+ }
+
+ a {
+     text-decoration: none;
+     color: inherit;
+ }
+
+ button {
+     cursor: pointer;
+
+ }
+
+ img {
+     max-width: 100%;
+     vertical-align: top;
+     /* 4px을 모두 없애주는 코드 */
+ }
+
+ /* ------------------------------------- */
+
+ body {
+     line-height: 1;
+ }
