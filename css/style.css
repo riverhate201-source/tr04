@@ -1,47 +1,106 @@
 body {
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     color: #333;
+    word-break: keep-all;
 }
+
+select,
+input,
+option,
+button {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+:root {
+    --primary-color: #009107;
+    --text-color: #222;
+    --line-color: #ddd;
+    --bg-color: #f9f9f9;
+    --w-color: #ffff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+}
+
 
 .inner {
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
-
+    padding: 0 15px;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    height: 32px;
-    border: 1px solid #ffd723;
-    padding: 0 24px;
-    font-size: 14px;
-}
-
-.btn::after {
-    content: ">";
-    margin-left: 16px;
+.header .inner h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
 }
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 999;
-    background: #fff;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background: #333;
+    opacity: 0.2;
+}
+
+.header.on {
+    background: var(--w-color);
     border-bottom: 1px solid #ddd;
-
 }
 
-.header h1 img {
-    height: 40px;
+.header.on::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background: #333;
+    opacity: 0;
 }
 
-.header .inner {
+.header .hd_wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 120px;
+
+}
+
+.header h1 {
+    z-index: 4;
+}
+
+.header h1 a {
+    display: block;
+    width: 196px;
+    height: 32px;
+    background: url(../images/logo01.png);
+}
+
+.header.on h1 a {
+    background: url(../images/logo02.png);
 }
 
 .header .gnb>ul {
@@ -49,59 +108,202 @@ body {
     gap: 40px;
 }
 
+.header .gnb>ul>li>a {
+    white-space: nowrap;
+    display: block;
+    line-height: 96px;
+    color: var(--w-color);
+}
+
+.header.on .gnb>ul>li>a {
+    color: var(--text-color);
+
+}
+
 .header .gnb>ul>li {
     position: relative;
 }
 
-.header .gnb>ul>li>a {
-    display: block;
-    line-height: 120px;
-    white-space: nowrap;
-}
-
 .header .gnb>ul>li ul {
-    display: none;
     position: absolute;
-    top: 120px;
+    top: 116px;
     left: 50%;
-    z-index: 9;
     transform: translate(-50%, 0);
-    background: #fff;
-    border-top: 2px solid #ffe524;
+    background: var(--w-color);
+
+    display: none;
+
 }
 
 .header .gnb>ul>li:hover ul {
     display: block;
 }
 
-.header .gnb>ul>li ul a {
+.header .gnb>ul>li ul li a {
     display: block;
+    padding: 0 24px;
     line-height: 40px;
     white-space: nowrap;
-    padding: 0 24px;
-    border-bottom: 1px solid #ddd;
 }
 
-.main_visual {
+.header .gnb>ul>li ul li~li a {
+    border-top: 1px solid var(--line-color);
+}
+
+.header .utils {
+    color: var(--w-color);
+}
+
+.header.on .utils {
+    color: var(--text-color);
+}
+
+
+.main_visual {}
+
+.main_visual .main_visual_slide {}
+
+.main_visual .main_visual_slide .itm {
     position: relative;
-    overflow: hidden;
-
-    height: calc(100vh - 121px);
+    height: 100vh;
 }
 
-.main_visual iframe {
+.main_visual .main_visual_slide .itm::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background: #000;
+    opacity: 0.3;
+}
+
+.main_visual .main_visual_slide .itm01 {
+    background: #000;
+}
+
+
+.main_visual .main_visual_slide .itm01 .yt-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.main_visual .yt-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.main_visual .yt-cover .custom-play {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.main_visual .yt-cover .custom-play .icon {
+    width: 80px;
+    height: 80px;
+    stroke-width: 1px;
+}
+
+
+.main_visual .main_visual_slide .itm01 .yt-bg iframe {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.main_visual .main_visual_slide .itm02 {
+    background: url(../images/main_visual01.jpg) no-repeat center center/cover;
+}
+
+.main_visual .main_visual_slide .itm03 {
+    background: url(../images/main_visual02.jpg) no-repeat center center/cover;
+}
+
+.main_visual .main_visual_slide .itm .slg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 56.25vw;
-    min-height: 100vh;
-    min-width: 177.77vh;
-    z-index: 1;
-    pointer-events: none;
 }
 
+.main_visual .main_visual_slide .itm .slg strong {
+    display: block;
+    font-size: 64px;
+    font-weight: 800;
+    text-align: center;
+    color: #fff;
+}
+
+.main_visual .main_visual_slide .itm .slg p {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+.main_visual .main_visual_slide .itm03 .slg .br_p {
+    font-size: 64px;
+    font-weight: 800;
+    text-align: center;
+    color: #fff;
+}
+
+.main_visual .arrows {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+
+    width: calc(100% - 48px);
+
+}
+
+.main_visual .arrows button {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    width: 120px;
+    height: 120px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.main_visual .arrows button .icon {
+    vertical-align: middle;
+    width: 72px;
+    height: 72px;
+    color: #fff;
+    stroke-width: 1px;
+}
+
+.main_visual .arrows .prev {
+    left: 0;
+
+}
+
+.main_visual .arrows .next {
+    right: 0;
+
+}
 
 .scroll-down {
     position: absolute;
@@ -116,30 +318,16 @@ body {
 }
 
 
-.scroll-down .mouse {
-    width: 24px;
-    height: 38px;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    position: relative;
-}
-
 
 .scroll-down .wheel {
     width: 2px;
-    height: 6px;
+    height: 16px;
     background-color: #fff;
-    border-radius: 2px;
     position: absolute;
-    top: 6px;
-
-
+    top: -16px;
     left: 0;
     right: 0;
     margin: 0 auto;
-
-
-    animation: scroll-ani 1.5s infinite;
 }
 
 
@@ -151,68 +339,24 @@ body {
 }
 
 
-@keyframes scroll-ani {
-    0% {
-        top: 6px;
-        opacity: 1;
-    }
-
-    100% {
-        top: 22px;
-        opacity: 0;
-    }
-}
-
-.main_visual .slg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-
-}
-
-.main_visual .slg h2 {
-    font-size: 64px;
-    font-weight: 800;
-    color: #fff;
-    text-align: center;
-}
-
-.main_visual .slg p {
-    margin-top: 16px;
-    font-style: 16px;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-}
 
 
-.main_visual::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    pointer-events: none;
-}
+
 
 .main_info {
-    padding: 120px 0;
+    padding: 96px 0;
 }
 
 .main_info .title {
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
+    text-align: center;
 }
 
 .main_info .title h2 {
     font-size: 40px;
-    font-weight: 600;
-    text-align: center;
+    font-weight: 700;
 
 }
 
@@ -220,14 +364,14 @@ body {
     margin-top: 16px;
     font-size: 16px;
     font-weight: 400;
-    text-align: center;
 
 }
 
 .main_info .inner {
     display: flex;
-    margin-top: 48px;
-    gap: 8px;
+    margin-top: 40px;
+
+
 }
 
 .main_info .inner .itm {
@@ -253,6 +397,34 @@ body {
     text-align: center;
 }
 
+.main_info .inner .itm .txt_box strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+}
+
+.main_info .inner .itm .txt_box p {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+
+.main_info .inner .itm .txt_box .btn {
+    margin-top: 24px;
+}
+
+.main_info .btn {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    border: 1px solid #009107;
+    padding: 0 24px;
+    font-size: 14px;
+}
 
 .main_info .inner .itm .txt_box::before {
     content: "";
@@ -263,191 +435,566 @@ body {
     display: block;
     width: 2px;
     height: 40px;
-    background: #333;
+    background: #009107;
 }
 
-.main_info .inner .itm .txt_box strong {
-    display: block;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: center;
-}
-
-.main_info .inner .itm .txt_box p {
-    margin-top: 16px;
-    line-height: 24px;
-    text-align: center;
-}
-
-.main_info .inner .itm .txt_box .btn {
-    margin-top: 24px;
-}
-
-.main_banner {
-    position: relative;
-    background: url(../images/main_visual.02.jpg) no-repeat center center/cover;
-    background-attachment: fixed;
-    height: 400px;
+.main_info a {
+    color: #009107
 }
 
 
-
-
-.main_banner .slg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    max-width: 1440px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main_banner .slg .btn {
-
-    margin-top: 32px;
-    padding: 12px 40px;
-    border: 1px solid #FFD700;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    background: transparent;
-}
-
-.main_banner .slg .btn:hover {
-    background: #FFD700;
-    color: #000;
+.main_info .btn:hover {
+    background: #009107;
+    color: var(--w-color);
     transition: all 0.3s ease;
 }
 
-.main_banner::before {
+.main_info .btn::after {
+    content: ">";
+    margin-left: 16px;
+    color: #009107
+}
+
+.main_info .btn:hover::after {
+    content: ">";
+    margin-left: 16px;
+    color: var(--w-color)
+}
+
+
+
+/* 1. 전체 섹션과 초록색 가짜 배경 */
+.main_product {
+    position: relative;
+    /* 배경을 깔기 위한 기준점 */
+    padding: 96px 0;
+    /* 위아래 여백 */
+}
+
+.main_product::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(0, 50%);
+    width: 2px;
+    height: 60px;
+    background: var(--primary-color);
+
+    z-index: 4;
+}
+
+/* 🌟 여기가 핵심! 초록색 배경을 위에서부터 65%까지만 칠해줍니다. */
+.main_product::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
-    background: #000;
-    opacity: 0.55;
+    width: 100%;
+    height: 65%;
+
+    background: url(../images/section2_bg.jpg) no-repeat center top/cover;
+    z-index: -1;
+    /* 콘텐츠들 뒤로 숨기기 */
 }
 
-.main_banner .slg h2 {
-    font-size: 40px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
+/* 2. 레이아웃을 좌우로 나누는 Flex */
+.main_product .inner {
+    display: flex;
+    gap: 60px;
+    /* 왼쪽 사진과 오른쪽 내용 사이의 간격 */
+    align-items: flex-end;
+    /* 🌟 밑바닥을 기준으로 정렬! */
+
+    max-width: calc((100% - 1200px)/2 + 1200px);
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 0;
 }
 
-.main_banner .slg p {
+/* 3. 왼쪽 영역 세팅 */
+.main_product .left_area {
+    width: 400px;
+    /* 큰 사진 너비 고정 */
+    flex-shrink: 0;
+    /* 화면 줄어들어도 사진 찌그러지지 않게 방어 */
+
+}
+
+.main_product .left_area .swiper {
+    overflow: visible;
+}
+
+.main_product .left_area .img_box img {
+    display: block;
+    width: 100%;
+
+    /* x축이동 y축이동 퍼짐정도 색상(투명도) */
+    box-shadow: 15px 24px 40px rgba(0, 0, 0, 0.3);
+
+    /* 혹시 사진 모서리를 살짝 둥글게 하고 싶다면 아래 주석을 푸세요! */
+    /* border-radius: 8px; */
+}
+
+.main_product .txt_box {
+    height: 120px;
+}
+
+.main_product .left_area .txt_box strong {
+    display: block;
+    margin-top: 24px;
     font-size: 16px;
-    font-weight: 16px;
-    color: #fff;
-    margin-top: 16px;
-    text-align: center;
-}
-
-
-.main_md {
-    padding: 120px 0;
-}
-
-
-
-.main_md .title {
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-.main_md .title h2 {
-    font-size: 40px;
     font-weight: 600;
-    text-align: center;
-
 }
 
-.main_md .title p {
+
+
+/* 4. 오른쪽 영역 세팅 */
+.main_product .right_area {
+    flex: 1;
+    /* 남은 공간 꽉 채우기 */
+    min-width: 0;
+    /* 🌟 Flex 안에서 Swiper가 삐져나가지 않게 하는 실무 마법의 코드! */
+}
+
+.main_product .right_area .title {
+    color: var(--w-color)
+}
+
+.main_product .right_area .title h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.main_product .right_area .title p {
     margin-top: 16px;
     font-size: 16px;
     font-weight: 400;
-    text-align: center;
+}
+
+.main_product .txt_box {
+    position: relative;
 
 }
 
-.main_md .inner {
+.main_product .right_area .txt_box strong {
+    display: block;
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+.main_product .right_area .swiper-wrapper {
+    margin-top: 40px;
+}
+
+.main_product a {
+    color: #009107;
+}
+
+.main_product .btn {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    border: 1px solid #009107;
+    padding: 0 24px;
+    font-size: 14px;
+}
+
+.main_product .btn:hover {
+    background: #009107;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.main_product .btn::after {
+    content: ">";
+    margin-left: 16px;
+}
+
+
+
+/* 화살표들을 감싸는 박스 */
+.main_product .arrows {
+    display: inline-flex;
+    margin-top: 40px;
+    color: var(--w-color);
+    border: 1px solid #ddd;
+    opacity: 0.7;
+}
+
+/* 동그란 버튼 모양 잡기 */
+.main_product .arrows button {
+    width: 56px;
+    height: 56px;
+
+    /* 연한 회색 테두리 */
+    border-radius: 0;
+    /* 완벽한 동그라미 */
+    background: transparent;
+    /* 배경 투명하게 */
+    cursor: pointer;
+
+    /* 아이콘을 완벽한 정중앙에! */
     display: flex;
-    margin-top: 48px;
-    gap: 8px;
-    max-width: 1440px;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s ease;
+    /* 부드러운 색상 변화 */
+    border: none;
 }
 
-.main_md .inner .itm {
+.main_product .arrows button~button {
+    border-left: 1px solid #fff;
+}
+
+.main_product .arrows button .tab {
+    color: #fff;
+}
+
+
+.main_default {
+    position: relative;
+    padding: 96px 0;
+    background: #f9f9f9;
+}
+
+.main_default .title {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.main_default .title h2 {
+    font-size: 40px;
+    font-weight: 700;
+
+}
+
+.main_default .title p {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.main_default .inner {
+    margin-top: 40px;
+
+}
+
+
+.main_default .inner .itm {}
+
+.main_default .swiper-slide {
+    max-width: 1200px;
+    margin-top: 40px;
+    filter: grayscale(1);
+}
+
+.main_default .swiper-slide.swiper-slide-active {
+    filter: grayscale(0);
+}
+
+.main_default .itm .txt_area {
+    margin-top: 24px;
+}
+
+.main_default .itm .txt_area strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+}
+
+.main_default .itm .txt_area p {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+
+.main_default .arrows {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+
+    max-width: 1200px;
+    width: 100%;
+
+
+
+}
+
+.main_default .arrows button {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.main_default .arrows .prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.main_default .arrows .next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.main_default .page {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.main_default .page span {
+    width: 18px;
+    height: 18px;
+    background: #ddd;
+    opacity: 1;
+    border-radius: 0;
+    transition: 0.4s;
+}
+
+
+.main_default .page span.swiper-pagination-bullet-active {
+    width: 18px;
+    background: var(--primary-color);
+    opacity: 1;
+}
+
+
+.main_news {
+    padding: 96px 0;
+}
+
+.main_news .title {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+}
+
+.main_news .title h2 {
+    font-size: 40px;
+    font-weight: 700;
+
+}
+
+.main_news .title p {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.main_news .inner {
+    display: flex;
+    gap: 100px;
+    margin-top: 40px;
+}
+
+.main_news .inner>* {
     flex: 1;
 }
 
-.main_md .inner .itm .img_box {
-    position: relative;
-    overflow: hidden;
+.main_news .tab_notice {}
+
+
+.main_news .tab_notice .tab_menu_ink {
+    display: flex;
+    border-bottom: 1px solid var(--primary-color);
+    height: 40px;
 }
 
-.main_md .inner .itm .img_box img {
-    width: 100%;
+.main_news .tab_notice .tab_menu_ink li {
+    border: 1px solid var(--line-color);
+}
+
+.main_news .tab_notice .tab_menu_ink li.on {
+    border: 1px solid var(--primary-color);
+
+}
+
+.main_news .tab_notice .tab_menu_ink li button {
+    padding: 0 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.main_news .tab_notice .tab_menu_ink li.on button {
+    background: var(--w-color);
+}
+
+
+.main_news .tab_notice .tab_content {
+    margin-top: 6px;
+}
+
+.main_news .tab_notice .tab_content .tab_content_con {
+    display: none;
+}
+
+.main_news .tab_notice .tab_content .tab_content_con.on {
     display: block;
-    transition: 0.4s;
 }
 
-.main_md .inner .itm:hover .img_box img {
-    transform: scale(1.4);
-    transition: 0.4s
+.main_news .tab_notice .tab_content .notice-list a {
+    display: flex;
+    border-bottom: 1px solid var(--line-color);
+    line-height: 56px;
 }
 
-.main_md .inner .itm .img_box .more_box {
+.main_news .tab_notice .tab_content .notice-list a .category {
+    width: 80px;
+}
+
+.main_news .tab_notice .tab_content .notice-list a .date {
+    margin-left: auto;
+}
+
+.main_news .utb_area .utb {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+
+}
+
+.main_news .utb_area .utb iframe {
     position: absolute;
-    bottom: -50px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    line-height: 50px;
-    background: rgba(255, 229, 36, 0.9);
-    color: #000;
-    text-align: center;
-    font-weight: 600;
-    z-index: 10;
+    height: 100%;
+}
+
+
+
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid #ddd;
+}
+
+.footer .inner {
+    position: relative;
+}
+
+.footer .info {
+    display: flex;
+    gap: 40px;
+}
+
+.footer .info li {
+    position: relative;
+}
+
+.footer .info li~li::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 0.5em;
+    background: #999;
+}
+
+.footer .family_link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.footer .family_link select {
+    /* 1. 브라우저 기본 화살표 없애기 마법! */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+
+    /* 2. 크기 및 기본 디자인 */
+    width: 200px;
+    height: 40px;
+    padding: 0 20px 0 16px;
+    /* 오른쪽에 화살표가 들어갈 40px 공간 확보 */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    /* 폰트 통일 */
+
+    /* 3. 커스텀 화살표 그리기 (SVG 코드를 배경으로 삽입) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    /* 오른쪽에서 12px 띄우고 세로 중앙 */
+    background-size: 16px;
+    /* 화살표 크기 */
+
+    transition: 0.3s ease;
+}
+
+/* 마우스를 올리거나 클릭했을 때 테두리를 초록색으로! */
+.footer .family_link select:focus,
+.footer .family_link select:hover {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+
+.footer address span {
+    display: block;
+    margin-top: 8px;
+}
+
+
+
+
+
+.to_top {
+    position: fixed;
+    right: -80px;
+    bottom: 80px;
+    z-index: 999;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: var(--w-color);
+
     transition: 0.4s;
 }
 
-
-.main_md .inner .itm:hover .img_box .more_box {
-    bottom: 0;
+.to_top .btn {
+    stroke-width: 1px;
+    width: 32px;
+    height: 32px;
 }
 
-.main_md .inner .itm .txt_box {
-    position: relative;
-    margin-top: 40px;
-    text-align: center;
-}
-
-
-
-
-.main_md .inner .itm .txt_box strong {
-    display: block;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: center;
-}
-
-.main_md .inner .itm .txt_box p {
-    margin-top: 16px;
-    line-height: 24px;
-    text-align: center;
-}
-
-.footer {
-    padding: 80px 0;
-    background: #ddd;
+.to_top.on {
+    right: 80px;
 }
