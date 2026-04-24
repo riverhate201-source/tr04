@@ -218,12 +218,14 @@ button {
 .header .utils {
     color: var(--w-color);
     transition: color 0.3s ease 0.4s;
+    cursor: pointer;
 }
 
 .header.on .utils,
 .header.hover .utils {
     color: var(--text-color);
     transition: color 0.1s ease 0s;
+    cursor: pointer;
 }
 
 .main_visual {}
