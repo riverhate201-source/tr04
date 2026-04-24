@@ -2,6 +2,14 @@ $(function () {
 
     lucide.createIcons();
 
+    // 🌟 1. 헤더 마우스 호버 이벤트 (투명인간 버그 완벽 해결)
+    $('.header .gnb').on('mouseenter', function () {
+        $('.header').addClass('hover');
+    }).on('mouseleave', function () {
+        $('.header').removeClass('hover');
+    });
+
+
     const main_visual_slide = new Swiper('.main_visual_slide', {
         loop: true,
         autoplay: {
@@ -12,13 +20,9 @@ $(function () {
 
         // Navigation arrows
         navigation: {
-
             prevEl: '.main_visual .arrows .prev',
             nextEl: '.main_visual .arrows .next',
         },
-
-
-
     });
 
     const left_slide = new Swiper('.main_product .left_slide', {
@@ -78,7 +82,6 @@ $(function () {
 
 
 
-
     const main_info_slide = new Swiper('.main_default_slide', {
         loop: true,
         //slidesPerView: 2,
@@ -95,21 +98,18 @@ $(function () {
             nextEl: '.main_default .arrows .next',
             prevEl: '.main_default .arrows .prev',
         },
-    })
-
+    });
 
 
     $(window).on('scroll', function () {
-        console.log($(window).scrollTop());
+        // console.log($(window).scrollTop());
 
         let num = $(window).scrollTop();
 
         if (num > 0) {
             $('.header').addClass('on')
-
         } else {
             $('.header').removeClass('on')
-
         }
 
         if (num > 800) {
@@ -128,25 +128,24 @@ $(function () {
 $(function () {
     $('.main_news .tab_notice .tab_menu_ink li button').on('click', function () {
         let idx = $(this).parent().index();
-        console.log(idx);
-
+        // console.log(idx);
 
         $('.main_news .tab_notice .tab_menu_ink li').removeClass('on')
         $(this).parent().addClass('on');
 
-
         $('.main_news .tab_notice .tab_content .tab_content_con').removeClass('on');
         $('.main_news .tab_notice .tab_content .tab_content_con').eq(idx).addClass('on');
-
-
     })
 });
+
 
 $(function () {
     $('#fl').on('change', function () {
         let lnk = $(this).val();
-        if (ink) {
+
+        // 🌟 3. 패밀리 링크 오타 완벽 수정! (ink를 lnk로 바꿈)
+        if (lnk) {
             window.open(lnk)
         }
     })
-})
+});
